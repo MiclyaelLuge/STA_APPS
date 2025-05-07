@@ -6,10 +6,11 @@ internal class DatabaseKaryawan {
     internal class KaryawanColumn : BaseColumns {
         companion object {
             const val TABLE_NAME = "karyawan"
-            const val _ID = "_id"
-            const val TITLE = "title"
-            const val DESCRIPTION = "description"
-            const val DATE = "date"
+            const val ID = "id"
+            const val NAMA = "nmKaryawan"
+            const val TGL_MASUK_KERJA = "tglMasukKerja"
+            const val USIA = "usia"
+
         }
     }
 }

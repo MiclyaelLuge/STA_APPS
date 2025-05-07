@@ -5,6 +5,8 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns._ID
+import android.util.Log
+import com.example.sta_apps.data.DatabaseKaryawan.KaryawanColumn.Companion.ID
 import com.example.sta_apps.data.DatabaseKaryawan.KaryawanColumn.Companion.TABLE_NAME
 import java.sql.SQLException
 import java.text.SimpleDateFormat
@@ -29,20 +31,21 @@ class KaryawanHelper(context: Context) {
 
     }
 
-    fun queryByFieldsSafe(
+
+    fun queryByFields(
         idKaryawan: String? = null,
         nmKaryawan: String? = null,
         usiaMin: Int? = null,
         usiaMax: Int? = null,
         tglMasukStart: Date? = null,
         tglMasukEnd: Date? = null
-    ): Cursor {
+    ): List<DataEntity> {
         val selectionParts = mutableListOf<String>()
         val selectionArgs = mutableListOf<String>()
 
-        idKaryawan?.let {
-            selectionParts.add("$_ID = ?")
-            selectionArgs.add(it)
+        if (!idKaryawan.isNullOrEmpty()) {
+            selectionParts.add("$ID = ?")
+            selectionArgs.add(idKaryawan)
         }
 
         nmKaryawan?.let {
@@ -77,7 +80,8 @@ class KaryawanHelper(context: Context) {
 
         val selection = if (selectionParts.isNotEmpty()) selectionParts.joinToString(" AND ") else null
 
-        return database.query(
+        val list = mutableListOf<DataEntity>()
+        val cursor = database.query(
             DATABASE_TABLE,
             null,
             selection,
@@ -86,7 +90,27 @@ class KaryawanHelper(context: Context) {
             null,
             null
         )
+
+        cursor.use {
+            if (cursor.moveToFirst()) {
+                do {
+                    val data = DataEntity(
+                        idKaryawan = cursor.getString(cursor.getColumnIndexOrThrow(ID)),
+                        nmKaryawan = cursor.getString(cursor.getColumnIndexOrThrow("nmKaryawan")),
+                        usia = cursor.getInt(cursor.getColumnIndexOrThrow("usia")),
+                        tglMasukKerja = formatter.parse(cursor.getString(cursor.getColumnIndexOrThrow("tglMasukKerja")))
+                    )
+                    list.add(data)
+                } while (cursor.moveToNext())
+            }
+        }
+
+        Log.d("QueryFields", "selection: $selection")
+        Log.d("QueryFields", "selectionArgs: ${selectionArgs.joinToString()}")
+
+        return list
     }
+
 
     fun insert(values: ContentValues?):Long{
         return database.insert(DATABASE_TABLE,null,values)

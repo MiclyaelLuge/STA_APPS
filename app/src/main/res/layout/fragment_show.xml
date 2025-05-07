@@ -1,14 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ShowFragment">
+    tools:context=".ui.EntryFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cd1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_NamaKaryawan"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Nama Karyawan"
+                    android:textSize="15dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_namaKaryawan1"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintEnd_toStartOf="@id/til_namaKaryawan2"
+                    app:layout_constraintStart_toEndOf="@id/tv_NamaKaryawan"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/namaKaryawan1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_namaKaryawan2"
+                    android:layout_width="125dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/til_namaKaryawan1"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/namaKaryawan2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_usia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Usia"
+                    android:textSize="15dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/til_namaKaryawan1" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_usia1"
+                    android:layout_width="125dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintEnd_toEndOf="@id/til_namaKaryawan1"
+                    app:layout_constraintStart_toStartOf="@id/til_namaKaryawan1"
+                    app:layout_constraintTop_toBottomOf="@id/til_namaKaryawan1">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/usia1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_usia2"
+                    android:layout_width="125dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintEnd_toEndOf="@id/til_namaKaryawan2"
+                    app:layout_constraintStart_toStartOf="@id/til_namaKaryawan2"
+                    app:layout_constraintTop_toBottomOf="@id/til_namaKaryawan2">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/usia2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_tglMasukKerja"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Tgl Masuk Kerja"
+                    android:textSize="15dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/til_usia1" />
+
+                <DatePicker
+                    android:id="@+id/tglkerja1"
+                    android:layout_width="125dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:datePickerMode="calendar"
+                    app:layout_constraintStart_toStartOf="@id/til_usia1"
+                    app:layout_constraintEnd_toEndOf="@id/til_usia1"
+                    app:layout_constraintTop_toBottomOf="@id/til_usia1" />
+
+                <DatePicker
+                    android:id="@+id/tglkerja2"
+                    android:layout_width="125dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:datePickerMode="calendar"
+                    app:layout_constraintStart_toStartOf="@id/til_usia2"
+                    app:layout_constraintTop_toBottomOf="@id/til_usia2"
+                    app:layout_constraintEnd_toEndOf="@id/til_usia2">
+
+                </DatePicker>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bt_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_margin="20dp"
+                    android:text="SEARCH"
+                    app:cornerRadius="0dp"
+                    android:layout_marginBottom="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/tglkerja1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cd2"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_new"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="New"
+            app:cornerRadius="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_Edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Edit"
+            app:cornerRadius="0dp"
+            app:layout_constraintStart_toEndOf="@id/bt_new"
+            app:layout_constraintTop_toBottomOf="@id/cd2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_Delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Delete"
+            app:cornerRadius="0dp"
+            app:layout_constraintStart_toEndOf="@id/bt_Edit"
+            app:layout_constraintTop_toBottomOf="@id/cd2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="Close"
+            app:cornerRadius="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/bt_Delete"
+            app:layout_constraintTop_toBottomOf="@id/cd2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

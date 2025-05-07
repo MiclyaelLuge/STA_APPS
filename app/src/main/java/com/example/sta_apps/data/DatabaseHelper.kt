@@ -12,10 +12,10 @@ internal class DatabaseHelper(context: Context) :
         private const val DATABASE_VERSION = 1
         private const val SQL_CREATE_TABLE_KARYAWAN =
             "CREATE TABLE $TABLE_NAME" +
-                    "(${DatabaseKaryawan.KaryawanColumn._ID} INTEGER PRIMARY KEY," +
-                    "${DatabaseKaryawan.KaryawanColumn.TITLE} TEXT NOT NULL," +
-                    "${DatabaseKaryawan.KaryawanColumn.DESCRIPTION} TEXT NOT NULL," +
-                    "${DatabaseKaryawan.KaryawanColumn.DATE} TEXT NOT NULL)"
+                    "(${DatabaseKaryawan.KaryawanColumn.ID} TEXT PRIMARY KEY," +
+                    "${DatabaseKaryawan.KaryawanColumn.NAMA} TEXT NOT NULL," +
+                    "${DatabaseKaryawan.KaryawanColumn.TGL_MASUK_KERJA} TEXT NOT NULL," +
+                    "${DatabaseKaryawan.KaryawanColumn.USIA} INTEGER NOT NULL)"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
